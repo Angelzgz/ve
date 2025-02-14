@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recordatorio de Mantenimiento</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Recordatorio de Mantenimiento</h1>
+        <p>Calcula cuándo será el próximo mantenimiento de tu vehículo eléctrico.</p>
+    </header>
+
+    <div class="maintenance">
+        <form id="maintenanceForm">
+            <label for="last-service">Último servicio (fecha):</label>
+            <input type="date" id="last-service" required><br>
+
+            <label for="mileage">Kilometraje actual (km):</label>
+            <input type="number" id="mileage" required><br>
+
+            <button type="submit">Calcular Próximo Mantenimiento</button>
+        </form>
+
+        <div id="maintenanceResult" style="display:none;">
+            <h3>Próximo mantenimiento a los <span id="next-mileage"></span> km</h3>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Vehículos Eléctricos</p>
+    </footer>
+
+    <script>
+        document.getElementById('maintenanceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var mileage = parseInt(document.getElementById('mileage').value);
+
+            // Suponemos que el mantenimiento debe hacerse cada 15,000 km
+            var nextServiceMileage = mileage + 15000;
+
+            document.getElementById('next-mileage').textContent = nextServiceMileage.toFixed(0);
+            document.getElementById('maintenanceResult').style.display = 'block';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Costos de Carga</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Costo de Carga</h1>
+        <p>Estima el costo de cargar tu vehículo eléctrico.</p>
+    </header>
+
+    <div class="calculator">
+        <form id="calcForm">
+            <label for="kwh-price">Precio por kWh (€):</label>
+            <input type="number" id="kwh-price" required><br>
+
+            <label for="battery-capacity">Capacidad de la batería (kWh):</label>
+            <input type="number" id="battery-capacity" required><br>
+
+            <button type="submit">Calcular</button>
+        </form>
+
+        <div id="result" style="display:none;">
+            <h3>Costo de carga estimado: <span id="cost"></span> €</h3>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Vehículos Eléctricos</p>
+    </footer>
+
+    <script>
+        document.getElementById('calcForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            var kwhPrice = parseFloat(document.getElementById('kwh-price').value);
+            var batteryCapacity = parseFloat(document.getElementById('battery-capacity').value);
+
+            var totalCost = kwhPrice * batteryCapacity;
+
+            document.getElementById('cost').textContent = totalCost.toFixed(2);
+            document.getElementById('result').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
